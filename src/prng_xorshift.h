@@ -3,7 +3,7 @@
 #include "prng.h"
 
 typedef struct _XorshiftABC {
-    u8 a, b, c;
+    u32 a, b, c;
 } XorshiftABC;
 typedef u32 (*XorshiftUpdater)(u32, u32, u32, u32);
 

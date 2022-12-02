@@ -19,7 +19,7 @@ PRNGMidsq::PRNGMidsq(u64 seed, u64 n) {
 
 void PRNGMidsq::check() {
     if (this->limit < 2)
-        std::runtime_error("Invalid value of n, use only 2 or 4");
+        throw std::runtime_error("Invalid value of n, use only 2 or 4");
 }
 
 void PRNGMidsq::update() {
@@ -32,7 +32,7 @@ void PRNGMidsq::update() {
 
 std::string PRNGMidsq::toString() const {
     std::stringstream ss;
-    ss << "PRNGMidsq at (" << this << ") initialized with " << this->seed
+    ss << "PRNGMidsq at (" << this << ")\ninitialized with " << this->seed
        << ": (state = " << this->state << ", limit = " << this->limit << ")\n";
     return ss.str();
 }

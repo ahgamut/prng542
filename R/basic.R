@@ -1,6 +1,6 @@
 loadModule("prng_internals", TRUE)
 
-`_factory` <- list(
+._factory <- list(
     "dummy" = function(seed, limit) {
         prng <- new(`_PRNGDummy`, seed, limit)   
     },
@@ -24,8 +24,38 @@ loadModule("prng_internals", TRUE)
 getPRNG <- function(name, seed, ...) {
     args <- list(...)
     args$seed = seed
-    if (name %in% names(`_factory`)) {
-        prng <- do.call(`_factory`[[name]], args)
+    if (name %in% names(._factory)) {
+        prng <- do.call(._factory[[name]], args)
+    } else {
+        stop("invalid name for RNG")
+    }
+    prng
+}
+
+.nice_factory <- list(
+    "dummy" = function() {
+        prng <- new(`_PRNGDummy`, 21, 256)   
+    },
+    "middle-square" = function() {
+        prng <- new(`_PRNGMidsq`, 1129, 4)   
+    },
+    "lehmer" = function() {
+        prng <- new(`_PRNGLehmer`, 37, 0x7fffffff, 48271)
+    },
+    "lcg" = function() {
+        prng <- new(`_PRNGLCG`, 55, 0x10001, 75, 74)
+    },
+    "blum-blum-shub" = function() {
+        prng <- new(`_PRNGBlum2Shub`, 3, 11, 23)
+    },
+    "xorshift" = function() {
+        prng <- new(`_PRNGXorshift`, 34, 41, 4)
+    }
+)
+
+getDefaultPRNG <- function(name) {
+    if (name %in% names(.nice_factory)) {
+        prng <- .nice_factory[[name]]()
     } else {
         stop("invalid name for RNG")
     }

@@ -11,7 +11,6 @@ void PRNG::check() {
 }
 
 double PRNG::get_value() {
-    this->update();
     return this->state / static_cast<double>(this->limit - 1);
 }
 
@@ -19,6 +18,7 @@ Rcpp::NumericVector PRNG::unif(u32 n) {
     Rcpp::NumericVector z(n);
     for (u32 i = 0; i < n; ++i) {
         z[i] = this->get_value();
+        this->update();
     }
     return z;
 }
@@ -26,8 +26,8 @@ Rcpp::NumericVector PRNG::unif(u32 n) {
 Rcpp::IntegerVector PRNG::draw(u32 n) {
     Rcpp::IntegerVector z(n);
     for (u32 i = 0; i < n; ++i) {
-        this->update();
         z[i] = this->state;
+        this->update();
     }
     return z;
 }

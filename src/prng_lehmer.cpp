@@ -13,14 +13,14 @@ PRNGLehmer::PRNGLehmer(u64 seed, u64 limit, u64 k) {
 
 void PRNGLehmer::check() {
     if (this->limit < 2 || this->k == 0 || this->seed == 0)
-        std::runtime_error("Invalid PRNG initialization values");
+        throw std::runtime_error("Invalid PRNG initialization values");
 }
 
 void PRNGLehmer::update() { this->state = (this->state * this->k) % this->limit; }
 
 std::string PRNGLehmer::toString() const {
     std::stringstream ss;
-    ss << "PRNGLehmer at (" << this << ") initialized with " << this->seed
+    ss << "PRNGLehmer at (" << this << ")\ninitialized with " << this->seed
        << "\nk = " << this->k << ": (state = " << this->state
        << ", limit = " << this->limit << ")\n";
     return ss.str();

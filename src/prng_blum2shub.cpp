@@ -25,13 +25,13 @@ PRNGBlum2Shub::PRNGBlum2Shub(u64 seed, u64 p, u64 q) {
 
 void PRNGBlum2Shub::check() {
     if (this->limit < 2 || this->seed == 0) {
-        std::runtime_error("Invalid PRNG initialization values");
+        throw std::runtime_error("Invalid PRNG initialization values");
     }
     if (this->p % 4 != 3 || this->q % 4 != 3) {
-        std::runtime_error("p , q need to be = 3 modulo 4");
+        throw std::runtime_error("p , q need to be = 3 modulo 4");
     }
     if (!isprime(this->p) || !isprime(this->q)) {
-        std::runtime_error("Blum-Blum-Shub needs two primes");
+        throw std::runtime_error("Blum-Blum-Shub needs two primes");
     }
 }
 
@@ -41,7 +41,7 @@ void PRNGBlum2Shub::update() {
 
 std::string PRNGBlum2Shub::toString() const {
     std::stringstream ss;
-    ss << "PRNGBlum2Shub at (" << this << ") initialized with " << this->seed
+    ss << "PRNGBlum2Shub at (" << this << ")\ninitialized with " << this->seed
        << "\np   = " << this->p << ", q = " << this->q
        << ": (state = " << this->state << ", limit = " << this->limit << ")\n";
     return ss.str();

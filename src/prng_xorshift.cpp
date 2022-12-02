@@ -104,7 +104,7 @@ PRNGXorshift::PRNGXorshift(u64 seed, u64 CONSTANT, u64 METHOD) {
 
 void PRNGXorshift::check() {
     if (this->seed == 0)
-        std::runtime_error("Invalid PRNG initialization values");
+        throw std::runtime_error("Invalid PRNG initialization values");
 }
 
 void PRNGXorshift::update() {
@@ -114,7 +114,7 @@ void PRNGXorshift::update() {
 
 std::string PRNGXorshift::toString() const {
     std::stringstream ss;
-    ss << "PRNGXorshift at (" << this << ") initialized with " << this->seed
+    ss << "PRNGXorshift at (" << this << ")\ninitialized with " << this->seed
        << "\nConstants = {" << this->abc.a << ", " << this->abc.b
        << ", " << this->abc.c << "}"
        << ": (state = " << this->state << ", limit = " << this->limit << ")\n";

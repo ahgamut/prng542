@@ -14,7 +14,7 @@ PRNGLCG::PRNGLCG(u64 seed, u64 limit, u64 a, u64 c) {
 
 void PRNGLCG::check() {
     if (this->limit < 2 || this->a == 0 || this->c == 0)
-        std::runtime_error("Invalid PRNG initialization values");
+        throw std::runtime_error("Invalid PRNG initialization values");
 }
 
 void PRNGLCG::update() {
@@ -23,7 +23,7 @@ void PRNGLCG::update() {
 
 std::string PRNGLCG::toString() const {
     std::stringstream ss;
-    ss << "PRNGLCG at (" << this << ") initialized with " << this->seed
+    ss << "PRNGLCG at (" << this << ")\ninitialized with " << this->seed
        << "\na = " << this->a << ", c = " << this->c
        << ": (state = " << this->state << ", limit = " << this->limit << ")\n";
     return ss.str();

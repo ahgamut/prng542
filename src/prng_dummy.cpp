@@ -14,7 +14,7 @@ void PRNGDummy::update() { this->state = (this->state + 1) % (this->limit); }
 
 std::string PRNGDummy::toString() const {
     std::stringstream ss;
-    ss << "PRNGDummy at (" << this << ") initialized with " << this->seed
+    ss << "PRNGDummy at (" << this << ")\ninitialized with " << this->seed
        << ": (state = " << this->state << ", limit = " << this->limit << ")\n";
     return ss.str();
 }
