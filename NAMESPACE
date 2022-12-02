@@ -1,3 +1,5 @@
 useDynLib(prng542, .registration=TRUE)
+importFrom(Rcpp, loadModule)
 importFrom(Rcpp, evalCpp)
+import(magrittr)
 exportPattern("^[[:alpha:]]+")

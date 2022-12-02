@@ -12,5 +12,6 @@ Description: In the STAT 542 lectures, it was mentioned that
     some approximation methods to generate uniform and some non-uniform
     distributions. 
 License: MIT
-Imports: Rcpp (>= 1.0.9)
+Imports: Rcpp (>= 1.0.9), magrittr (>= 2.0.0)
+Depends: Rcpp (>= 1.0.9), magrittr (>= 2.0.0)
 LinkingTo: Rcpp
