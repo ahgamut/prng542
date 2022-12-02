@@ -8,9 +8,8 @@ Maintainer: Gautham V <ahgamut@gmail.com>
 Description: In the STAT 542 lectures, it was mentioned that
     the generation of random numbers would be an interesting exercise,
     although tangentially related to the syllabus of the class. This package
-    implements a few well-known pseudo-random number generators along with
-    some approximation methods to generate uniform and some non-uniform
-    distributions. 
+    implements a few simple pseudo-random number generators like 
+    LCG, Blum-Blum-Shub, and the Xorshift families. 
 License: MIT
 Imports: Rcpp (>= 1.0.9), magrittr (>= 2.0.0)
 Depends: Rcpp (>= 1.0.9), magrittr (>= 2.0.0)
